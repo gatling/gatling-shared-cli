@@ -21,27 +21,24 @@ import static java.util.Objects.requireNonNull;
 import edu.umd.cs.findbugs.annotations.NonNull;
 
 public final class CliOption {
-  public final String fullName;
-  public final String abbreviatedName;
+  public final String longName;
+  public final String shortName;
   public final String text;
   public final String valueName;
 
   public CliOption(
-      @NonNull String fullName,
-      @NonNull String abbreviatedName,
-      @NonNull String text,
-      String valueName) {
-    this.fullName = requireNonNull(fullName);
-    this.abbreviatedName = requireNonNull(abbreviatedName);
+      @NonNull String longName, @NonNull String shortName, @NonNull String text, String valueName) {
+    this.longName = requireNonNull(longName);
+    this.shortName = requireNonNull(shortName);
     this.text = requireNonNull(text);
     this.valueName = valueName;
   }
 
-  public String fullOption() {
-    return "--" + fullName;
+  public String longOption() {
+    return "--" + longName;
   }
 
-  public String abbreviatedOption() {
-    return "-" + abbreviatedName;
+  public String shortOption() {
+    return "-" + shortName;
   }
 }
