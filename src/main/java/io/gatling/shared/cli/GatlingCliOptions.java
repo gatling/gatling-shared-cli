@@ -34,6 +34,12 @@ public final class GatlingCliOptions {
           "<directoryPath>");
   public static final CliOption Simulation =
       new CliOption("simulation", "s", "Runs <className> simulation", "<className>");
+  public static final CliOption SimulationName =
+      new CliOption(
+          "simulation-name",
+          "sn",
+          "Overrides simulation name with <simulationName>",
+          "<simulationName>");
   public static final CliOption RunDescription =
       new CliOption(
           "run-description",
