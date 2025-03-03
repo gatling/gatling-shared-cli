@@ -19,7 +19,7 @@ lazy val root = (project in file("."))
     crossPaths := false, // drop off Scala suffix from artifact names.
     autoScalaLibrary := false, // exclude scala-library from dependencies
     libraryDependencies ++= Seq(
-      "com.github.spotbugs" % "spotbugs-annotations" % "4.9.1"
+      "com.github.spotbugs" % "spotbugs-annotations" % "4.9.2"
     ),
     spotlessJava := JavaConfig(
       googleJavaFormat = GoogleJavaFormatConfig()
