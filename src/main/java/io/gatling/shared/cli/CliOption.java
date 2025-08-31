@@ -18,7 +18,7 @@ package io.gatling.shared.cli;
 
 import static java.util.Objects.requireNonNull;
 
-import edu.umd.cs.findbugs.annotations.NonNull;
+import org.jspecify.annotations.NonNull;
 
 public final class CliOption {
   public final String longName;
