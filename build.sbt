@@ -4,7 +4,7 @@ enablePlugins(GatlingOssPlugin)
 
 ThisBuild / sonatypeCredentialHost := "s01.oss.sonatype.org"
 ThisBuild / organization := "io.gatling"
-ThisBuild / licenses := Seq("Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0.html"))
+ThisBuild / licenses := Seq("Apache-2.0" -> url("https://www.apache.org/licenses/LICENSE-2.0.html"))
 ThisBuild / startYear := Some(2024)
 
 Global / githubPath := "gatling/gatling-shared-cli"
