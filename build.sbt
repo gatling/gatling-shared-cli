@@ -1,19 +1,18 @@
-import net.moznion.sbt.spotless.config.{ GoogleJavaFormatConfig, JavaConfig, SpotlessConfig }
+import com.github.sbt.JavaFormatterPlugin.autoImport.*
+import com.google.googlejavaformat.java.JavaFormatterOptions
 
 enablePlugins(GatlingOssPlugin)
 
-ThisBuild / sonatypeCredentialHost := "s01.oss.sonatype.org"
-ThisBuild / organization := "io.gatling"
-ThisBuild / licenses := Seq("Apache-2.0" -> url("https://www.apache.org/licenses/LICENSE-2.0.html"))
-ThisBuild / startYear := Some(2024)
+organization := "io.gatling"
+licenses := Seq("Apache-2.0" -> url("https://www.apache.org/licenses/LICENSE-2.0.html"))
+startYear := Some(2024)
 
-Global / githubPath := "gatling/gatling-shared-cli"
-Global / gatlingDevelopers := Seq(
+githubPath := "gatling/gatling-shared-cli"
+gatlingDevelopers := Seq(
   GatlingDeveloper("slandelle@gatling.io", "Stephane Landelle", isGatlingCorp = true)
 )
 
 lazy val root = (project in file("."))
-  .enablePlugins(GatlingOssPlugin)
   .settings(
     name := "gatling-shared-cli",
     crossPaths := false, // drop off Scala suffix from artifact names.
@@ -21,11 +20,8 @@ lazy val root = (project in file("."))
     libraryDependencies ++= Seq(
       "org.jspecify" % "jspecify" % "1.0.0"
     ),
-    spotlessJava := JavaConfig(
-      googleJavaFormat = GoogleJavaFormatConfig()
-    ),
-    spotless := SpotlessConfig(
-      applyOnCompile = !sys.env.getOrElse("CI", "false").toBoolean
-    ),
+    javafmtOnCompile := !sys.env.getOrElse("CI", "false").toBoolean,
+    javafmtFormatterCompatibleJavaVersion := 21,
+    javafmtStyle := JavaFormatterOptions.Style.GOOGLE,
     Compile / packageSrc / mappings := Nil
   )
