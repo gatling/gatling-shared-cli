@@ -18,7 +18,7 @@ lazy val root = (project in file("."))
     crossPaths := false, // drop off Scala suffix from artifact names.
     autoScalaLibrary := false, // exclude scala-library from dependencies
     libraryDependencies ++= Seq(
-      "org.jspecify" % "jspecify" % "1.0.0"
+      "org.jspecify" % "jspecify" % "1.0.1"
     ),
     javafmtOnCompile := !sys.env.getOrElse("CI", "false").toBoolean,
     javafmtFormatterCompatibleJavaVersion := 21,
