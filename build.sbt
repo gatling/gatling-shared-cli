@@ -1,10 +1,7 @@
-import com.github.sbt.JavaFormatterPlugin.autoImport.*
-import com.google.googlejavaformat.java.JavaFormatterOptions
-
 enablePlugins(GatlingOssPlugin)
 
 organization := "io.gatling"
-licenses := Seq("Apache-2.0" -> url("https://www.apache.org/licenses/LICENSE-2.0.html"))
+licenses := Seq("Apache-2.0" -> uri("https://www.apache.org/licenses/LICENSE-2.0.html"))
 startYear := Some(2024)
 
 githubPath := "gatling/gatling-shared-cli"
@@ -21,7 +18,5 @@ lazy val root = (project in file("."))
       "org.jspecify" % "jspecify" % "1.0.1"
     ),
     javafmtOnCompile := !sys.env.getOrElse("CI", "false").toBoolean,
-    javafmtFormatterCompatibleJavaVersion := 21,
-    javafmtStyle := JavaFormatterOptions.Style.GOOGLE,
     Compile / packageSrc / mappings := Nil
   )
