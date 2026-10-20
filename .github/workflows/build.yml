@@ -42,4 +42,4 @@ jobs:
           sbt \
             "headerCheckAll;" \
             "javafmtCheckAll;" \
-            "test"
+            "testFull"
