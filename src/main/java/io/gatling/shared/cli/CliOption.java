@@ -26,6 +26,8 @@ public final class CliOption {
   public final String text;
   public final String valueName;
   public final boolean hidden;
+  private final String longOption;
+  private final String shortOption;
 
   public CliOption(
       @NonNull String longName, @NonNull String shortName, @NonNull String text, String valueName) {
@@ -43,13 +45,29 @@ public final class CliOption {
     this.text = requireNonNull(text);
     this.valueName = valueName;
     this.hidden = hidden;
+    this.longOption = "--" + longName;
+    this.shortOption = "-" + shortName;
   }
 
   public String longOption() {
-    return "--" + longName;
+    return longOption;
   }
 
   public String shortOption() {
-    return "-" + shortName;
+    return shortOption;
+  }
+
+  @Override
+  public String toString() {
+    return "CliOption{"
+        + "longName='"
+        + longName
+        + "', shortName='"
+        + shortName
+        + "', valueName="
+        + (valueName == null ? "null" : "'" + valueName + "'")
+        + ", hidden="
+        + hidden
+        + "}";
   }
 }
