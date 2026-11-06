@@ -18,28 +18,57 @@ package io.gatling.shared.cli;
 
 import static java.util.Objects.requireNonNull;
 
-import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.Nullable;
 
+/** A command line option, with a long form ({@code --name}) and a short form ({@code -n}). */
 public final class CliOption {
+  /** The long name, without the leading {@code --}. */
   public final String longName;
+
+  /** The short name, without the leading {@code -}. */
   public final String shortName;
+
+  /** The description displayed in the usage text. */
   public final String text;
-  public final String valueName;
+
+  /**
+   * The placeholder for the option's value displayed in the usage text, such as {@code
+   * <className>}, or {@code null} if the option is a flag that doesn't take a value.
+   */
+  public final @Nullable String valueName;
+
+  /**
+   * Whether the option should be excluded from the usage text. Hidden options are still parsed;
+   * they're meant to be set by launchers, not by users.
+   */
   public final boolean hidden;
+
   private final String longOption;
   private final String shortOption;
 
-  public CliOption(
-      @NonNull String longName, @NonNull String shortName, @NonNull String text, String valueName) {
+  /**
+   * Creates a visible option.
+   *
+   * @param longName the long name, without the leading {@code --}
+   * @param shortName the short name, without the leading {@code -}
+   * @param text the description displayed in the usage text
+   * @param valueName the value placeholder, or {@code null} for a flag
+   */
+  public CliOption(String longName, String shortName, String text, @Nullable String valueName) {
     this(longName, shortName, text, valueName, false);
   }
 
+  /**
+   * Creates an option.
+   *
+   * @param longName the long name, without the leading {@code --}
+   * @param shortName the short name, without the leading {@code -}
+   * @param text the description displayed in the usage text
+   * @param valueName the value placeholder, or {@code null} for a flag
+   * @param hidden whether the option should be excluded from the usage text
+   */
   public CliOption(
-      @NonNull String longName,
-      @NonNull String shortName,
-      @NonNull String text,
-      String valueName,
-      boolean hidden) {
+      String longName, String shortName, String text, @Nullable String valueName, boolean hidden) {
     this.longName = requireNonNull(longName);
     this.shortName = requireNonNull(shortName);
     this.text = requireNonNull(text);
@@ -49,10 +78,20 @@ public final class CliOption {
     this.shortOption = "-" + shortName;
   }
 
+  /**
+   * Returns the long form of this option.
+   *
+   * @return the long name prefixed with {@code --}, e.g. {@code --simulation}
+   */
   public String longOption() {
     return longOption;
   }
 
+  /**
+   * Returns the short form of this option.
+   *
+   * @return the short name prefixed with {@code -}, e.g. {@code -s}
+   */
   public String shortOption() {
     return shortOption;
   }

@@ -16,24 +16,34 @@
 
 package io.gatling.shared.cli;
 
+/** The options of the Gatling Recorder command line. */
 public final class RecorderCliOptions {
 
+  /** The absolute path of the directory where generated simulations are stored. */
   public static final CliOption SimulationsFolder =
       new CliOption(
           "simulations-folder",
           "sf",
           "Uses <directoryPath> as the absolute path of the directory where simulations are stored",
           "<directoryPath>");
+
+  /** The folder where generated resources, such as request bodies, are stored. */
   public static final CliOption ResourcesFolder =
       new CliOption(
           "resources-folder",
           "rf",
           "Uses <folderName> as the folder where generated resources will be stored",
           "<folderName>");
+
+  /** The package of the generated simulation class. */
   public static final CliOption Package =
       new CliOption("package", "pkg", "Sets the package of the generated class", "<package>");
+
+  /** The name of the generated simulation class. */
   public static final CliOption ClassName =
       new CliOption("classname", "cn", "Sets the name of the generated class", "<classname>");
+
+  /** The format (language) of the generated code. */
   public static final CliOption Format =
       new CliOption("format", "fmt", "Sets the format of the generated code", "<format>");
 
