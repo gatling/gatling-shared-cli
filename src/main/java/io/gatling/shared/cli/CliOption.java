@@ -25,13 +25,24 @@ public final class CliOption {
   public final String shortName;
   public final String text;
   public final String valueName;
+  public final boolean hidden;
 
   public CliOption(
       @NonNull String longName, @NonNull String shortName, @NonNull String text, String valueName) {
+    this(longName, shortName, text, valueName, false);
+  }
+
+  public CliOption(
+      @NonNull String longName,
+      @NonNull String shortName,
+      @NonNull String text,
+      String valueName,
+      boolean hidden) {
     this.longName = requireNonNull(longName);
     this.shortName = requireNonNull(shortName);
     this.text = requireNonNull(text);
     this.valueName = valueName;
+    this.hidden = hidden;
   }
 
   public String longOption() {

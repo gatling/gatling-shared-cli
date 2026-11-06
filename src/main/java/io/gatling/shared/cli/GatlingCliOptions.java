@@ -41,10 +41,14 @@ public final class GatlingCliOptions {
           "A short <description> of the run to include in the report",
           "<description>");
   public static final CliOption Launcher =
-      new CliOption("launcher", "l", "The program that launched Gatling", "");
+      new CliOption("launcher", "l", "The program that launched Gatling", "<launcher>", true);
   public static final CliOption BuildToolVersion =
       new CliOption(
-          "build-tool-version", "btv", "The version of the build tool used to launch Gatling", "");
+          "build-tool-version",
+          "btv",
+          "The version of the build tool used to launch Gatling",
+          "<version>",
+          true);
 
   private GatlingCliOptions() {}
 }
